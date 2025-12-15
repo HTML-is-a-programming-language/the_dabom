@@ -11,6 +11,9 @@ html, body {
     font-family: "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
+.main-page {
+    background: #000;
+}
 .sub-page {
     background-color: #000;
     background-image: linear-gradient(180deg, rgba(18, 141, 255, 0.30) 0%, rgba(0, 0, 0, 0.30) 27.94%
@@ -59,6 +62,267 @@ html, body {
 }
 .header-wrap .login-link img {
     width: 100%;
+}
+
+.content-index {
+    overflow: hidden;
+    padding: 0 0 364px;
+}
+.content-index .video-wrap {
+    background: url(../images/img_main_banner.png) center / cover no-repeat;
+}
+.content-index .video-wrap .video-container {
+    position: relative;
+    width: 1520px;
+    height: 973px;
+    margin: -85px auto 0;
+}
+.content-index .video-wrap .video-container .text-box {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 510px;
+    left: 0;
+}
+.content-index .video-wrap .video-container .text-box .box-text {
+    font-size: 30px;
+    font-weight: 600;
+    color: #FFF;
+}
+.content-index .video-wrap .video-container .text-box .box-title {
+    margin: 20px 0 0;
+    font-size: 60px;
+    font-weight: 800;
+    color: #FFF;
+    line-height: 1.2;
+}
+.content-index .video-wrap .video-container .text-box .scroll-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 105px;
+    height: 33px;
+    margin: 90px 0 0;
+    border: 1px solid #FFFFFF4D;
+    border-radius: 999px;
+    background: #FFFFFF1A;
+}
+.content-index .video-wrap .video-container .text-box .scroll-box .text {
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFF;
+    letter-spacing: -0.03em;
+}
+.content-index .video-wrap .video-container .text-box .scroll-box .icon {
+    display: flex;
+    width: 17px;
+    height: 17px;
+}
+.content-index .video-wrap .video-container .text-box .scroll-box .icon img {
+    width: 100%;
+    height: 100%;
+}
+.content-index .banner-wrap {
+    width: 1490px;
+    margin: 150px auto 0;
+}
+.content-index .banner-wrap .text-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.content-index .banner-wrap > .text-box .box-title {
+    font-size: 60px;
+    font-weight: 800;
+    color: #FFF;
+    line-height: 1.2;
+}
+.content-index .banner-wrap > .text-box .box-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #FFF;
+}
+.content-index .banner-wrap .banner-container {
+    overflow: visible;
+    margin: 100px 0 0;
+}
+.content-index .banner-wrap .banner-container .banner-list .banner-item {
+    position: relative;
+    width: 906px;
+    height: 643px;
+    background: #000;
+    opacity: .2;
+}
+.content-index .banner-wrap .banner-container .banner-list .banner-item.swiper-slide-active {
+    opacity: 1;
+}
+.content-index .banner-wrap .banner-container .banner-list .banner-item .image-box img {
+    width: 100%;
+}
+.content-index .banner-wrap .banner-container .banner-list .banner-item .text-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 60px;
+    left: 75px;
+}
+.content-index .banner-wrap .banner-container .banner-list .banner-item .text-box .box-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #FFF;
+    line-height: 45px;
+}
+.content-index .banner-wrap .banner-container .banner-list .banner-item .text-box .box-text {
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFF;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+.content-index .banner-wrap .banner-container .swiper-button-prev {
+    left: 160px;
+    width: 30px;
+    height: 52px;
+    background: url(../images/ico_arrow_left.png) center / cover no-repeat;
+}
+.content-index .banner-wrap .banner-container .swiper-button-prev svg {
+    display: none;
+}
+.content-index .banner-wrap .banner-container .swiper-button-next {
+    right: 160px;
+    width: 30px;
+    height: 52px;
+    background: url(../images/ico_arrow_right.png) center / cover no-repeat;
+}
+.content-index .banner-wrap .banner-container .swiper-button-next svg {
+    display: none;
+}
+.content-index .card-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    width: 1493px;
+    margin: 150px auto 0;
+}
+.content-index .card-wrap .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.content-index .card-wrap .card-container .container-title {
+    font-size: 50px;
+    font-weight: 800;
+    color: #FFF;
+}
+.content-index .card-wrap .card-container .card-list {
+    display: flex;
+    gap: 25px;
+}
+.content-index .card-wrap .card-container .card-list .card-item {
+    width: 100%;
+}
+.content-index .card-wrap .card-container .card-list .card-item .card-button {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.content-index .card-wrap .card-container .card-list .card-item .card-button .image {
+    display: flex;
+    width: 100%;
+}
+.content-index .card-wrap .card-container .card-list .card-item .card-button .image img {
+    width: 100%;
+}
+.content-index .card-wrap .card-container .card-list .card-item .card-button .text-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.content-index .card-wrap .card-container .card-list .card-item .card-button .text-box .box-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFF;
+    letter-spacing: -0.03em;
+    line-height: 30px;
+}
+.content-index .card-wrap .card-container .card-list .card-item .card-button .text-box .icon {
+    display: flex;
+    width: 16px;
+    height: 10px;
+}
+.content-index .card-wrap .card-container .card-list .card-item .card-button .text-box .icon img {
+    width: 100%;
+}
+.content-index .card-wrap .card-container .accordion-wrap {
+    padding: 80px 100px 90px;
+    background: #FFF;
+}
+.content-index .card-wrap .card-container .accordion-wrap .text-box {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.content-index .card-wrap .card-container .accordion-wrap .text-box .box-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #000;
+    letter-spacing: -0.03em;
+    line-height: 30px;
+}
+.content-index .card-wrap .card-container .accordion-wrap .text-box .box-text {
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list {
+    margin: 60px 0 0;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item + .accordion-item {
+    border-top: 1px solid #B1B1B1;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 40px 0;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-text-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-text-box .icon {
+    display: flex;
+    width: 44px;
+    height: 44px;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-text-box .icon img {
+    width: 100%;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-text-box .button-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    letter-spacing: -0.03em;
+    line-height: 30px;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-icon {
+    display: flex;
+    width: 34px;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-icon img {
+    width: 100%;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-box {
+    padding: 40px 50px;
+    border-top: 1px solid #B1B1B1;
+    font-size: 24px;
+    line-height: 1.2;
 }
 
 .content-exoai-learning {
