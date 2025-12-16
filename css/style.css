@@ -29,7 +29,7 @@ html, body {
     justify-content: space-between;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 10;
     width: 1520px;
     height: 85px;
     margin: 0 auto;
@@ -66,6 +66,7 @@ html, body {
 
 .content-index {
     overflow: hidden;
+    margin: -85px 0 0;
     padding: 0 0 364px;
 }
 .content-index .video-wrap {
@@ -75,7 +76,7 @@ html, body {
     position: relative;
     width: 1520px;
     height: 973px;
-    margin: -85px auto 0;
+    margin: 0 auto;
 }
 .content-index .video-wrap .video-container .text-box {
     display: flex;
@@ -208,7 +209,6 @@ html, body {
 .content-index .card-wrap .card-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
 }
 .content-index .card-wrap .card-container .container-title {
     font-size: 50px;
@@ -218,6 +218,7 @@ html, body {
 .content-index .card-wrap .card-container .card-list {
     display: flex;
     gap: 25px;
+    margin: 40px 0 0;
 }
 .content-index .card-wrap .card-container .card-list .card-item {
     width: 100%;
@@ -227,11 +228,30 @@ html, body {
     flex-direction: column;
     gap: 30px;
 }
+.content-index .card-wrap .card-container .card-list .card-item .card-button .image-box {
+    position: relative;
+}
 .content-index .card-wrap .card-container .card-list .card-item .card-button .image {
     display: flex;
     width: 100%;
 }
 .content-index .card-wrap .card-container .card-list .card-item .card-button .image img {
+    width: 100%;
+}
+.content-index .card-wrap .card-container .card-list .card-item .card-button .image-active {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: .3s;
+}
+.content-index .card-wrap .card-container .card-list .card-item .card-button.active .image-active {
+    opacity: 1;
+}
+.content-index .card-wrap .card-container .card-list .card-item .card-button .image-active img {
     width: 100%;
 }
 .content-index .card-wrap .card-container .card-list .card-item .card-button .text-box {
@@ -250,13 +270,28 @@ html, body {
     display: flex;
     width: 16px;
     height: 10px;
+    transition: .3s;
+}
+.content-index .card-wrap .card-container .card-list .card-item .card-button.active .text-box .icon {
+    transform: rotate(180deg);
 }
 .content-index .card-wrap .card-container .card-list .card-item .card-button .text-box .icon img {
     width: 100%;
 }
 .content-index .card-wrap .card-container .accordion-wrap {
-    padding: 80px 100px 90px;
+    overflow: hidden;
+    max-height: 0;
+    margin: 0;
+    padding: 0;
     background: #FFF;
+    opacity: 0;
+    transition: .3s;
+}
+.content-index .card-wrap .card-container .accordion-wrap.active {
+    max-height: 1000px;
+    margin: 60px 0 0;
+    padding: 80px 100px 90px;
+    opacity: 1;
 }
 .content-index .card-wrap .card-container .accordion-wrap .text-box {
     display: flex;
@@ -315,14 +350,150 @@ html, body {
     display: flex;
     width: 34px;
 }
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-icon.minus {
+    display: none;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button.active .button-icon.plus {
+    display: none;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button.active .button-icon.minus {
+    display: flex;
+}
 .content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-icon img {
     width: 100%;
 }
 .content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-box {
-    padding: 40px 50px;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0;
     border-top: 1px solid #B1B1B1;
     font-size: 24px;
     line-height: 1.2;
+    opacity: 0;
+    transition: .3s;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-box.active {
+    max-height: 800px;
+    padding: 40px 50px;
+    opacity: 1;
+}
+
+.content-manual {
+    padding: 63px 0 110px;
+}
+.content-manual .visual-wrap {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    width: 1520px;
+    margin: 0 auto;
+}
+.content-manual .visual-wrap .image-box {
+    display: flex;
+    width: 692px;
+    height: 678px;
+}
+.content-manual .visual-wrap .image-box img {
+    width: 100%;
+    height: 100%;
+}
+.content-manual .visual-wrap .text-box {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.content-manual .visual-wrap .text-box .box-title {
+    font-size: 80px;
+    font-weight: 800;
+    color: #FFF;
+}
+.content-manual .visual-wrap .text-box .box-title .blue {
+    color: #57A6FF;
+}
+.content-manual .visual-wrap .text-box .box-text {
+    font-size: 30px;
+    font-weight: 600;
+    color: #FFF;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+.content-manual .manual-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 1520px;
+    margin: 40px auto 0;
+}
+.content-manual .manual-wrap .manual-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 80px 100px;
+    border-radius: 20px;
+    background: linear-gradient(116.2deg, rgba(105, 170, 255, 0.24) 19.94%, rgba(71, 71, 71, 0.4) 106.73%);
+}
+.content-manual .manual-wrap .manual-container .image-wrap {
+    display: flex;
+    gap: 20px;
+}
+.content-manual .manual-wrap .manual-container .image-wrap .image-box {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 20px;
+}
+.content-manual .manual-wrap .manual-container .image-wrap .image-box img {
+    width: 100%;
+}
+.content-manual .manual-wrap .manual-container .container-text {
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFF;
+    letter-spacing: -0.03em;
+    line-height: 30px;
+}
+.content-manual .download-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 1520px;
+    margin: 100px auto 0;
+}
+.content-manual .download-box .box-text {
+    font-size: 40px;
+    font-weight: 800;
+    color: #FFF;
+    text-align: center;
+}
+.content-manual .download-box .download-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 260px;
+    height: 70px;
+    border: 1px solid #FFF;
+    border-radius: 10px;
+    background: #FFFFFF1A;
+    transition: .3s;
+}
+.content-manual .download-box .download-link:hover {
+    border: 1px solid #14549C;
+    background: #14549C;
+}
+.content-manual .download-box .download-link .link-text {
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFF;
+}
+.content-manual .download-box .download-link .link-icon {
+    display: flex;
+    width: 18px;
+    height: 18px;
+}
+.content-manual .download-box .download-link .link-icon img {
+    width: 100%;
+    height: 100%;
 }
 
 .content-exoai-learning {
@@ -335,7 +506,6 @@ html, body {
     gap: 30px;
     position: relative;
     width: 1520px;
-    padding: 0 0 0;
     margin: 0 auto;
 }
 .content-exoai-learning .exoai-wrap .wrap-title {

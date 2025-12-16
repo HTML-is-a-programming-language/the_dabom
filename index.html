@@ -12,7 +12,7 @@
 <body class="main-page">
     <header class="header-wrap">
         <a href="index.html" class="logo-link">
-            <img src="images/logo.png" alt="">
+            <img src="images/logo.png" alt="logo">
         </a>
         <nav class="nav-wrap">
             <a href="index.html" class="nav-link">EXOAI about</a>
@@ -22,7 +22,7 @@
             <a href="Technical_support_estimate.html" class="nav-link">Technical support estimate</a>
         </nav>
         <a href="javascript:void(0);" class="login-link">
-            <img src="images/ico_login.png" alt="">
+            <img src="images/ico_login.png" alt="login">
         </a>
     </header>
     <main class="content-index">
@@ -34,7 +34,7 @@
                     <div class="scroll-box">
                         <span class="text">Scroll Down</span>
                         <span class="icon">
-                            <img src="images/ico_scroll.png" alt="">
+                            <img src="images/ico_scroll.png" alt="scroll">
                         </span>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                 <ul class="banner-list swiper-wrapper">
                     <li class="banner-item swiper-slide">
                         <div class="image-box">
-                            <img src="images/img_banner_1.png" alt="">
+                            <img src="images/img_banner_1.png" alt="banner1">
                         </div>
                         <div class="text-box">
                             <h3 class="box-title">What are artificial exosomes?</h3>
@@ -58,7 +58,7 @@
                     </li>
                     <li class="banner-item swiper-slide">
                         <div class="image-box">
-                            <img src="images/img_banner_2.png" alt="">
+                            <img src="images/img_banner_2.png" alt="banner2">
                         </div>
                         <div class="text-box">
                             <h3 class="box-title">Online reference video</h3>
@@ -67,7 +67,7 @@
                     </li>
                     <li class="banner-item swiper-slide">
                         <div class="image-box">
-                            <img src="images/img_banner_3.png" alt="">
+                            <img src="images/img_banner_3.png" alt="banner3">
                         </div>
                         <div class="text-box">
                             <h3 class="box-title">EXOAI learning & Download</h3>
@@ -84,78 +84,183 @@
                 <h2 class="container-title">Lorem ipsum</h2>
                 <ul class="card-list">
                     <li class="card-item">
-                        <button type="button" class="card-button">
-                            <span class="image">
-                                <img src="images/img_card_1.png" alt="">
-                            </span>
+                        <button type="button" class="card-button" data-card="0" onclick="cardButton(this);">
+                            <div class="image-box">
+                                <span class="image">
+                                    <img src="images/img_card_1.png" alt="card1">
+                                </span>
+                                <span class="image-active">
+                                    <img src="images/img_card_active_1.png" alt="card1">
+                                </span>
+                            </div>
                             <div class="text-box">
                                 <span class="box-text">Rare Diseases</span>
                                 <span class="icon">
-                                    <img src="images/ico_arrow_down.png" alt="">
+                                    <img src="images/ico_arrow_down.png" alt="arrow">
                                 </span>
                             </div>
                         </button>
                     </li>
                     <li class="card-item">
-                        <button type="button" class="card-button">
-                            <span class="image">
-                                <img src="images/img_card_2.png" alt="">
-                            </span>
+                        <button type="button" class="card-button" data-card="1" onclick="cardButton(this);">
+                            <div class="image-box">
+                                <span class="image">
+                                    <img src="images/img_card_2.png" alt="card2">
+                                </span>
+                            </div>
                             <div class="text-box">
                                 <span class="box-text">Vaccines</span>
                                 <span class="icon">
-                                    <img src="images/ico_arrow_down.png" alt="">
+                                    <img src="images/ico_arrow_down.png" alt="arrow">
                                 </span>
                             </div>
                         </button>
                     </li>
                     <li class="card-item">
-                        <button type="button" class="card-button">
-                            <span class="image">
-                                <img src="images/img_card_3.png" alt="">
-                            </span>
+                        <button type="button" class="card-button" data-card="2" onclick="cardButton(this);">
+                            <div class="image-box">
+                                <span class="image">
+                                    <img src="images/img_card_3.png" alt="card3">
+                                </span>
+                            </div>
                             <div class="text-box">
                                 <span class="box-text">Immunology</span>
                                 <span class="icon">
-                                    <img src="images/ico_arrow_down.png" alt="">
+                                    <img src="images/ico_arrow_down.png" alt="arrow">
                                 </span>
                             </div>
                         </button>
                     </li>
                 </ul>
-                <div class="accordion-wrap">
+                <div class="accordion-wrap" data-card="0">
                     <div class="text-box">
                         <h3 class="box-title">Rare Diseases</h3>
                         <span class="box-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
                     </div>
                     <ul class="accordion-list">
                         <li class="accordion-item">
-                            <button type="button" class="accordion-button">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
                                 <div class="button-text-box">
                                     <span class="icon">
-                                        <img src="images/ico_accordion_1.png" alt="">
+                                        <img src="images/ico_accordion_1.png" alt="accordion1">
                                     </span>
                                     <span class="button-text">Lorem ipsum</span>
                                 </div>
-                                <span class="button-icon">
-                                    <img src="images/ico_minus.png" alt="">
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
                                 </span>
                             </button>
                             <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magna aliqua.</div>
                         </li>
                         <li class="accordion-item">
-                            <button type="button" class="accordion-button">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
                                 <div class="button-text-box">
                                     <span class="icon">
-                                        <img src="images/ico_accordion_2.png" alt="">
+                                        <img src="images/ico_accordion_2.png" alt="accordion2">
                                     </span>
                                     <span class="button-text">Dolor sit amet</span>
                                 </div>
-                                <span class="button-icon">
-                                    <img src="images/ico_plus.png" alt="">
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
                                 </span>
                             </button>
+                            <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="accordion-wrap" data-card="1">
+                    <div class="text-box">
+                        <h3 class="box-title">Rare Diseases</h3>
+                        <span class="box-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                    </div>
+                    <ul class="accordion-list">
+                        <li class="accordion-item">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
+                                <div class="button-text-box">
+                                    <span class="icon">
+                                        <img src="images/ico_accordion_1.png" alt="accordion1">
+                                    </span>
+                                    <span class="button-text">Lorem ipsum</span>
+                                </div>
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
+                                </span>
+                            </button>
+                            <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.</div>
+                        </li>
+                        <li class="accordion-item">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
+                                <div class="button-text-box">
+                                    <span class="icon">
+                                        <img src="images/ico_accordion_2.png" alt="accordion2">
+                                    </span>
+                                    <span class="button-text">Dolor sit amet</span>
+                                </div>
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
+                                </span>
+                            </button>
+                            <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="accordion-wrap" data-card="2">
+                    <div class="text-box">
+                        <h3 class="box-title">Rare Diseases</h3>
+                        <span class="box-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                    </div>
+                    <ul class="accordion-list">
+                        <li class="accordion-item">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
+                                <div class="button-text-box">
+                                    <span class="icon">
+                                        <img src="images/ico_accordion_1.png" alt="accordion1">
+                                    </span>
+                                    <span class="button-text">Lorem ipsum</span>
+                                </div>
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
+                                </span>
+                            </button>
+                            <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.</div>
+                        </li>
+                        <li class="accordion-item">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
+                                <div class="button-text-box">
+                                    <span class="icon">
+                                        <img src="images/ico_accordion_2.png" alt="accordion2">
+                                    </span>
+                                    <span class="button-text">Dolor sit amet</span>
+                                </div>
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
+                                </span>
+                            </button>
+                            <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.</div>
                         </li>
                     </ul>
                 </div>
@@ -164,47 +269,182 @@ incididunt ut labore et dolore magna aliqua.</div>
                 <h2 class="container-title">Dolor sit amet</h2>
                 <ul class="card-list">
                     <li class="card-item">
-                        <button type="button" class="card-button">
-                            <span class="image">
-                                <img src="images/img_card_4.png" alt="">
-                            </span>
+                        <button type="button" class="card-button" data-card="3" onclick="cardButton(this);">
+                            <div class="image-box">
+                                <span class="image">
+                                    <img src="images/img_card_4.png" alt="card4">
+                                </span>
+                            </div>
                             <div class="text-box">
                                 <span class="box-text">Plasma Derivative Protein</span>
                                 <span class="icon">
-                                    <img src="images/ico_arrow_down.png" alt="">
+                                    <img src="images/ico_arrow_down.png" alt="arrow">
                                 </span>
                             </div>
                         </button>
                     </li>
                     <li class="card-item">
-                        <button type="button" class="card-button">
-                            <span class="image">
-                                <img src="images/img_card_5.png" alt="">
-                            </span>
+                        <button type="button" class="card-button" data-card="4" onclick="cardButton(this);">
+                            <div class="image-box">
+                                <span class="image">
+                                    <img src="images/img_card_5.png" alt="card5">
+                                </span>
+                            </div>
                             <div class="text-box">
                                 <span class="box-text">Recombinant Protein</span>
                                 <span class="icon">
-                                    <img src="images/ico_arrow_down.png" alt="">
+                                    <img src="images/ico_arrow_down.png" alt="arrow">
                                 </span>
                             </div>
                         </button>
                     </li>
                     <li class="card-item">
-                        <button type="button" class="card-button">
-                            <span class="image">
-                                <img src="images/img_card_6.png" alt="">
-                            </span>
+                        <button type="button" class="card-button" data-card="5" onclick="cardButton(this);">
+                            <div class="image-box">
+                                <span class="image">
+                                    <img src="images/img_card_6.png" alt="card6">
+                                </span>
+                            </div>
                             <div class="text-box">
                                 <span class="box-text">mRNA/LNP Technology</span>
                                 <span class="icon">
-                                    <img src="images/ico_arrow_down.png" alt="">
+                                    <img src="images/ico_arrow_down.png" alt="arrow">
                                 </span>
                             </div>
                         </button>
                     </li>
                 </ul>
-                <div class="card-box">
-
+                <div class="accordion-wrap" data-card="3">
+                    <div class="text-box">
+                        <h3 class="box-title">Rare Diseases</h3>
+                        <span class="box-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                    </div>
+                    <ul class="accordion-list">
+                        <li class="accordion-item">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
+                                <div class="button-text-box">
+                                    <span class="icon">
+                                        <img src="images/ico_accordion_1.png" alt="accordion1">
+                                    </span>
+                                    <span class="button-text">Lorem ipsum</span>
+                                </div>
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
+                                </span>
+                            </button>
+                            <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.</div>
+                        </li>
+                        <li class="accordion-item">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
+                                <div class="button-text-box">
+                                    <span class="icon">
+                                        <img src="images/ico_accordion_2.png" alt="accordion2">
+                                    </span>
+                                    <span class="button-text">Dolor sit amet</span>
+                                </div>
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
+                                </span>
+                            </button>
+                            <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="accordion-wrap" data-card="4">
+                    <div class="text-box">
+                        <h3 class="box-title">Rare Diseases</h3>
+                        <span class="box-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                    </div>
+                    <ul class="accordion-list">
+                        <li class="accordion-item">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
+                                <div class="button-text-box">
+                                    <span class="icon">
+                                        <img src="images/ico_accordion_1.png" alt="accordion1">
+                                    </span>
+                                    <span class="button-text">Lorem ipsum</span>
+                                </div>
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
+                                </span>
+                            </button>
+                            <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.</div>
+                        </li>
+                        <li class="accordion-item">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
+                                <div class="button-text-box">
+                                    <span class="icon">
+                                        <img src="images/ico_accordion_2.png" alt="accordion2">
+                                    </span>
+                                    <span class="button-text">Dolor sit amet</span>
+                                </div>
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
+                                </span>
+                            </button>
+                            <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="accordion-wrap" data-card="5">
+                    <div class="text-box">
+                        <h3 class="box-title">Rare Diseases</h3>
+                        <span class="box-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                    </div>
+                    <ul class="accordion-list">
+                        <li class="accordion-item">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
+                                <div class="button-text-box">
+                                    <span class="icon">
+                                        <img src="images/ico_accordion_1.png" alt="accordion1">
+                                    </span>
+                                    <span class="button-text">Lorem ipsum</span>
+                                </div>
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
+                                </span>
+                            </button>
+                            <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.</div>
+                        </li>
+                        <li class="accordion-item">
+                            <button type="button" class="accordion-button" onclick="accordionButton(this);">
+                                <div class="button-text-box">
+                                    <span class="icon">
+                                        <img src="images/ico_accordion_2.png" alt="accordion2">
+                                    </span>
+                                    <span class="button-text">Dolor sit amet</span>
+                                </div>
+                                <span class="button-icon plus">
+                                    <img src="images/ico_plus.png" alt="plus">
+                                </span>
+                                <span class="button-icon minus">
+                                    <img src="images/ico_minus.png" alt="minus">
+                                </span>
+                            </button>
+                            <div class="accordion-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua.</div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -212,7 +452,7 @@ incididunt ut labore et dolore magna aliqua.</div>
     <footer class="footer-wrap">
         <div class="footer-container">
             <div class="logo-box">
-                <img src="images/logo.png" alt="">
+                <img src="images/logo.png" alt="logo">
             </div>
             <address class="address-wrap">
                 <div class="address-box">
