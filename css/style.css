@@ -95,7 +95,7 @@ html, body {
 .content-index .video-wrap {
     position: relative;
     z-index: 0;
-    background: url(../img/img_main_banner.png) center top / 100% 100dvh no-repeat;
+    background: url(/images/img_main_banner.png) center top / 100% 100dvh no-repeat;
 }
 .content-index .video-wrap.is-bg-fixed {
     background: none;
@@ -104,7 +104,7 @@ html, body {
     content: "";
     position: fixed;
     inset: 0;
-    background: url(../img/img_main_banner.png) center top / 100% 100dvh no-repeat;
+    background: url(/images/img_main_banner.png) center top / 100% 100dvh no-repeat;
     opacity: 1;
     visibility: hidden;
     pointer-events: none;
@@ -306,7 +306,7 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     left: 160px;
     width: 30px;
     height: 52px;
-    background: url(../img/ico_arrow_left.png) center / cover no-repeat;
+    background: url(/images/ico_arrow_left.png) center / cover no-repeat;
 }
 .content-index .banner-wrap .banner-container .swiper-button-prev svg {
     display: none;
@@ -315,7 +315,7 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     right: 160px;
     width: 30px;
     height: 52px;
-    background: url(../img/ico_arrow_right.png) center / cover no-repeat;
+    background: url(/images/ico_arrow_right.png) center / cover no-repeat;
 }
 .content-index .banner-wrap .banner-container .swiper-button-next svg {
     display: none;
@@ -1182,7 +1182,7 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     padding: 18px 20px;
     border: 1px solid #3671D4;
     border-radius: 5px;
-    background: url(../img/ico_select.png) right 20px center / 17px 12px no-repeat;
+    background: url(/images/ico_select.png) right 20px center / 17px 12px no-repeat;
     font-family: "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: 20px;
     font-weight: bold;
@@ -1190,7 +1190,7 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box select:disabled {
     border: 1px solid #CBCBCB;
-    background: url(../img/ico_select_disable.png) right 20px center / 17px 12px no-repeat;
+    background: url(/images/ico_select_disable.png) right 20px center / 17px 12px no-repeat;
     color: #ACACAC;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .select-title {
@@ -1231,7 +1231,7 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .text-container .text-box .box-text {
     position: relative;
     padding: 0 0 0 22px;
-    background: url(../img/ico_asterisk.png) left center / 10px no-repeat;
+    background: url(/images/ico_asterisk.png) left center / 10px no-repeat;
     font-size: 20px;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .text-container .text-box .box-text strong {
