@@ -6,22 +6,27 @@
     <title>EXOAI_learning</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+	  select.is-disabled { opacity: 0.6; cursor: not-allowed; }
+	</style>
 </head>
 <body class="sub-page">
     <header class="header-wrap">
-        <a href="index.html" class="logo-link">
-            <img src="images/logo.png" alt="logo">
-        </a>
-        <nav class="nav-wrap">
-            <a href="index.html" class="nav-link">EXOAI about</a>
-            <a href="Manual.html" class="nav-link">Manual</a>
-            <a href="Online_reference_video.html" class="nav-link">Online reference video</a>
-            <a href="EXOAI_learning.html" class="nav-link">EXOAI learning</a>
-            <a href="Technical_support_estimate.html" class="nav-link">Technical support estimate</a>
-        </nav>
-        <a href="javascript:void(0);" class="login-link">
-            <img src="images/ico_login.png" alt="login">
-        </a>
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.png" alt="logo">
+            </a>
+            <nav class="nav-wrap">
+                <a href="index.html" class="nav-link">EXOAI about</a>
+                <a href="manual.html" class="nav-link">Manual</a>
+                <a href="references.html" class="nav-link">References</a>
+                <a href="EXOAI_learning.html" class="nav-link">EXOAI learning</a>
+                <a href="contact.html" class="nav-link">Contact us</a>
+            </nav>
+            <a href="javascript:void(0);" class="login-link">
+                <img src="images/ico_login.png" alt="login">
+            </a>
+        </div>
     </header>
     <main class="content-exoai-learning">
         <div class="exoai-wrap">
@@ -111,15 +116,15 @@
                 <div class="select-wrap">
                     <div class="select-box">
                         <select name="diseaseOption" id="diseaseOption">
-                            <option value="">Pancreatic Cancer</option>
-                        </select>
+						  <option value="">Select Disease</option>
+						</select>
                         <span class="select-title">Disease Option</span>
                     </div>
                     <div class="select-box">
-                        <select name="aipOption" id="aipOption">
-                            <option value="">RAW264.7</option>
+                        <select name="apiOption" id="apiOption" disabled>
+                            <option value="">Select API Type</option>
                         </select>
-                        <span class="select-title">AIP Option</span>
+                        <span class="select-title">API Option</span>
                     </div>
                     <div class="select-box">
                         <select name="cargoOption" id="cargoOption" disabled>
@@ -132,9 +137,9 @@
                     <div class="text-container">
                         <h3 class="box-title">Selected Parameters</h3>
                         <div class="text-box">
-                            <span class="box-text">Disease : <strong id="diseaseOptionText">Pancreatic Cancer</strong></span>
-                            <span class="box-text">Cell Type : <strong id="aipOptionText">RAW264.7</strong></span>
-                            <span class="box-text">Cargo : <strong id="cargoOptionText">-</strong></span>
+                            <span class="box-text">Disease : <strong id="diseaseOptionText"></strong></span>
+                            <span class="box-text">Cell Type : <strong id="apiOptionText"></strong></span>
+                            <span class="box-text">Cargo : <strong id="cargoOptionText"></strong></span>
                         </div>
                     </div>
                     <div class="button-box">
@@ -251,5 +256,6 @@
             </address>
         </div>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>
