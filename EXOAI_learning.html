@@ -19,7 +19,6 @@
             <nav class="nav-wrap">
                 <a href="./index.html" class="nav-link">EXOAI about</a>
                 <a href="./Manual.html" class="nav-link">Manual</a>
-                <a href="./references.html" class="nav-link">References</a>
                 <a href="./EXOAI_learning.html" class="nav-link">EXOAI learning</a>
                 <a href="./contact.html" class="nav-link">Contact us</a>
             </nav>
@@ -107,7 +106,21 @@
                 <img src="images/img_workflow.png" alt="workflow">
             </div>
         </div>
+        <div class="video-wrap">
+            <h2 class="wrap-title">
+                <span class="title">EXOAI Guide video</span>
+            </h2>
+            <div class="video-box">
+                <video src="images/video_main_banner.mp4"></video>
+                <button type="button" class="play-button">
+                    <img src="images/btn_play.png" alt="">
+                </button>
+            </div>
+        </div>
         <div class="parameter-section-wrap">
+            <div class="parameter-exoai-wrap">
+                <img src="images/img_learning_exoai.png" alt="">
+            </div>
             <div class="parameter-section-container">
                 <div class="title-box">
                     <h2 class="box-title">Parameter Selection</h2>
@@ -115,128 +128,179 @@
                 </div>
                 <div class="select-wrap">
                     <div class="select-box">
-                        <select name="diseaseOption" id="diseaseOption">
-						  <option value="">Select Disease</option>
-						</select>
-                        <span class="select-title">Disease Option</span>
-                    </div>
-                    <div class="select-box">
-                        <select name="apiOption" id="apiOption" disabled>
-                            <option value="">Select API Type</option>
-                        </select>
                         <span class="select-title">API Option</span>
+                        <select name="apiOption" id="apiOption">
+                            <option value="">Select API Type</option>
+                            <option value="pancreaticCancer">Pancreatic Cancer</option>
+                            <option value="direcInput">Direct Input</option>
+                            <option value="miRNA">miRNA</option>
+                            <option value="Protein">Protein</option>
+                        </select>
+                        <div class="ui-select">
+                            <button type="button" class="ui-select-button"></button>
+                            <ul class="ui-select-list" hidden></ul>
+                        </div>
+                        <input type="text" id="apiDirecInput" name="apiDirecInput" placeholder="Please enter text">
                     </div>
                     <div class="select-box">
-                        <select name="cargoOption" id="cargoOption" disabled>
-                            <option value="">Select Cargo</option>
-                        </select>
                         <span class="select-title">Cargo Option</span>
+                        <select name="cargoOption" id="cargoOption" disabled>
+                            <option value="">Select</option>
+                        </select>
+                    </div>
+                    <div class="select-box">
+                        <span class="select-title">Lipid</span>
+                        <select name="lipidOption" id="lipidOption" disabled>
+                            <option value="">Select</option>
+                        </select>
+                    </div>
+                    <div class="select-box">
+                        <span class="select-title">Target organ</span>
+                        <select name="targetOrganOption" id="targetOrganOption" disabled>
+                            <option value="">Select</option>
+                        </select>
                     </div>
                 </div>
                 <div class="selected-parameters-wrap">
                     <div class="text-container">
                         <h3 class="box-title">Selected Parameters</h3>
                         <div class="text-box">
-                            <span class="box-text">Disease : <strong id="diseaseOptionText"></strong></span>
-                            <span class="box-text">Cell Type : <strong id="apiOptionText"></strong></span>
-                            <span class="box-text">Cargo : <strong id="cargoOptionText"></strong></span>
+                            <span class="box-text">API Option : <strong id="apiOptionText">Pancreatic Cancer</strong></span>
+                            <span class="box-text">Cargo Option : <strong id="cargoOptionText">-</strong></span>
+                            <span class="box-text">Lipid : <strong id="lipidText">-</strong></span>
+                            <span class="box-text">Target organ : <strong id="targetOrganText">-</strong></span>
                         </div>
                     </div>
-                    <div class="button-box">
-                        <button type="button" class="run-button">
-                            <span class="button-text">Run</span>
-                            <span class="button-icon">
-                                <img src="images/ico_run.png" alt="run">
-                            </span>
-                        </button>
-                        <button type="button" class="download-button">
-                            <span class="button-text">Download</span>
-                            <span class="button-icon">
-                                <img src="images/ico_download.png" alt="download">
-                            </span>
-                        </button>
+                </div>
+                <div class="button-box">
+                    <button type="button" class="run-button">
+                        <span class="button-text">Run</span>
+                        <span class="button-icon">
+                            <img src="images/ico_run.png" alt="run">
+                        </span>
+                    </button>
+                    <button type="button" class="loading-button">
+                        <span class="button-text">Loading</span>
+                        <span class="button-icon">
+                            <img src="images/ico_loading.png" alt="Loading">
+                        </span>
+                    </button>
+                    <button type="button" class="download-button">
+                        <span class="button-text">Download</span>
+                        <span class="button-icon">
+                            <img src="images/ico_download.png" alt="download">
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="critical-wrap">
+                <div class="critical-container">
+                    <h2 class="container-title">Critical Material Attributes (CMAs)</h2>
+                    <div class="critical-box">
+                        <ul class="critical-list">
+                            <li class="critical-item">
+                                <span class="item-title">DC-CHOL</span>
+                                <span class="item-text">50%</span>
+                            </li>
+                            <li class="critical-item">
+                                <span class="item-title">CHOL</span>
+                                <span class="item-text">0% - 30%</span>
+                            </li>
+                            <li class="critical-item">
+                                <span class="item-title">SM</span>
+                                <span class="item-text">5% - 25%</span>
+                            </li>
+                            <li class="critical-item">
+                                <span class="item-title">PC</span>
+                                <span class="item-text">10% - 25%</span>
+                            </li>
+                            <li class="critical-item">
+                                <span class="item-title">PS</span>
+                                <span class="item-text">5% - 20%</span>
+                            </li>
+                            <li class="critical-item">
+                                <span class="item-title">PE</span>
+                                <span class="item-text">5% - 20%</span>
+                            </li>
+                        </ul>
+                        <span class="total">Total: 100.0%</span>
+                    </div>
+                    <div class="no-results-box">
+                        <span class="image">
+                            <img src="images/img_empty.png" alt="">
+                        </span>
+                        <span class="box-title">No results yet</span>
+                        <span class="box-text">Select data on the left and<br>click Run to start the analysis.</span>
                     </div>
                 </div>
-                <span class="container-text">All cargo molecules validated for nanoparticle delivery Laboratory of Biochip Technology, Yonsei University © 2024</span>
-            </div>
-            <div class="critical-wrap first">
-                <h2 class="wrap-title">Critical Material Attributes (CMAs)</h2>
-                <div class="critical-container">
-                    <ul class="critical-list">
-                        <li class="critical-item">
-                            <span class="item-title">DC-CHOL</span>
-                            <span class="item-text">20% - 50%</span>
-                        </li>
-                        <li class="critical-item">
-                            <span class="item-title">CHOL</span>
-                            <span class="item-text">0% - 30%</span>
-                        </li>
-                        <li class="critical-item">
-                            <span class="item-title">SM</span>
-                            <span class="item-text">5% - 25%</span>
-                        </li>
-                        <li class="critical-item">
-                            <span class="item-title">PC</span>
-                            <span class="item-text">10% - 25%</span>
-                        </li>
-                        <li class="critical-item">
-                            <span class="item-title">PS</span>
-                            <span class="item-text">5% - 20%</span>
-                        </li>
-                        <li class="critical-item">
-                            <span class="item-title">PE</span>
-                            <span class="item-text">5% - 20%</span>
-                        </li>
-                    </ul>
-                    <span class="total">Total: 100.0%</span>
+                <div class="critical-container second">
+                    <h2 class="container-title">Critical Quality Attributes (CQAs)</h2>
+                    <div class="critical-box">
+                        <ul class="critical-list">
+                            <li class="critical-item">
+                                <span class="item-title">Particle Size</span>
+                                <span class="item-text">140.2 nm</span>
+                            </li>
+                            <li class="critical-item">
+                                <span class="item-title">Zeta Potential</span>
+                                <span class="item-text">-14.8 mV</span>
+                            </li>
+                            <li class="critical-item">
+                                <span class="item-title">PDI</span>
+                                <span class="item-text">0.221</span>
+                            </li>
+                            <li class="critical-item">
+                                <span class="item-title">Encapsulation Efficiency</span>
+                                <span class="item-text">93.0%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="no-results-box">
+                        <span class="image">
+                            <img src="images/img_empty.png" alt="">
+                        </span>
+                        <span class="box-title">No results yet</span>
+                        <span class="box-text">Select data on the left and<br>click Run to start the analysis.</span>
+                    </div>
                 </div>
-            </div>
-            <div class="critical-wrap second">
-                <h2 class="wrap-title">Critical Quality Attributes (CQAs)</h2>
-                <div class="critical-container">
-                    <ul class="critical-list">
-                        <li class="critical-item">
-                            <span class="item-title">Particle Size</span>
-                            <span class="item-text">140.2 nm</span>
-                        </li>
-                        <li class="critical-item">
-                            <span class="item-title">Zeta Potential</span>
-                            <span class="item-text">-14.8 mV</span>
-                        </li>
-                        <li class="critical-item">
-                            <span class="item-title">PDI</span>
-                            <span class="item-text">0.221</span>
-                        </li>
-                        <li class="critical-item">
-                            <span class="item-title">Encapsulation Efficiency</span>
-                            <span class="item-text">93.0%</span>
-                        </li>
-                    </ul>
+                <div class="critical-container third">
+                    <h2 class="container-title">Critical Process Parameters (CPPs)</h2>
+                    <div class="critical-box">
+                        <ul class="critical-list">
+                            <li class="critical-item">
+                                <span class="item-title">Temperature</span>
+                                <span class="item-text">24.0°C</span>
+                            </li>
+                            <li class="critical-item">
+                                <span class="item-title">Flow Rate</span>
+                                <span class="item-text">2.58 mL/min</span>
+                            </li>
+                            <li class="critical-item">
+                                <span class="item-title">Flow rate ratio</span>
+                                <span class="item-text">1:3</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="no-results-box">
+                        <span class="image">
+                            <img src="images/img_empty.png" alt="">
+                        </span>
+                        <span class="box-title">No results yet</span>
+                        <span class="box-text">Select data on the left and<br>click Run to start the analysis.</span>
+                    </div>
                 </div>
-            </div>
-            <div class="critical-wrap third">
-                <h2 class="wrap-title">Critical Process Parameters (CPPs)</h2>
-                <div class="critical-container">
-                    <ul class="critical-list">
-                        <li class="critical-item">
-                            <span class="item-title">Temperature</span>
-                            <span class="item-text">24.0°C</span>
-                        </li>
-                        <li class="critical-item">
-                            <span class="item-title">Flow Rate</span>
-                            <span class="item-text">2.58 mL/min</span>
-                        </li>
-                        <li class="critical-item">
-                            <span class="item-title">Flow rate ratio</span>
-                            <span class="item-text">1:3</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="exosome-image-wrap">
-                <h2 class="wrap-title">Exosome Image</h2>
-                <div class="image-box">
-                    <img src="images/img_exosome_image.png" alt="exosome">
+                <div class="exosome-image-wrap">
+                    <h2 class="wrap-title">Exosome Image</h2>
+                    <div class="image-box">
+                        <img src="images/img_exosome_image.png" alt="exosome">
+                    </div>
+                    <div class="no-results-box">
+                        <span class="image">
+                            <img src="images/img_empty.png" alt="">
+                        </span>
+                        <span class="box-title">No results yet</span>
+                        <span class="box-text">Select data on the left and<br>click Run to start the analysis.</span>
+                    </div>
                 </div>
             </div>
         </div>

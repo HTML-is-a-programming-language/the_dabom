@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, {
             root: null,
-            threshold: 0.15,
+            threshold: 0,
             rootMargin: '0px 0px -10% 0px'
         });
 
@@ -281,21 +281,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const exoaiWrap = document.querySelector('.content-exoai-learning .exoai-wrap');
     const workflowWrap = document.querySelector('.content-exoai-learning .workflow-wrap');
+    const guideVideoWrap = document.querySelector('.content-exoai-learning .video-wrap');
     const parameterSectionWrap = document.querySelector('.content-exoai-learning .parameter-section-wrap');
+    const parameterExoaiWrap = document.querySelector('.content-exoai-learning .parameter-section-wrap .parameter-exoai-wrap');
     const parameterSectionContainer = document.querySelector('.content-exoai-learning .parameter-section-wrap .parameter-section-container');
     const exosomeImageWrap = document.querySelector('.content-exoai-learning .parameter-section-wrap .exosome-image-wrap');
-
-    const criticalWraps = document.querySelectorAll('.content-exoai-learning .parameter-section-wrap .critical-wrap');
+    const criticalWrap = document.querySelector('.content-exoai-learning .parameter-section-wrap .critical-wrap');
 
     observeShowOnce(exoaiWrap);
     observeShowOnce(workflowWrap);
+    observeShowOnce(guideVideoWrap);
     observeShowOnce(parameterSectionWrap);
+    observeShowOnce(parameterExoaiWrap);
     observeShowOnce(parameterSectionContainer);
     observeShowOnce(exosomeImageWrap);
-
-    criticalWraps.forEach((el) => {
-        observeShowOnce(el);
-    });
+    observeShowOnce(criticalWrap);
 
     const bannerList = document.querySelector('.banner-container .banner-list');
     if (!bannerList) return;
@@ -498,3 +498,296 @@ function tabButton(e) {
 
     showNext();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const root = document.querySelector('main.content-exoai-learning');
+    if (!root) return;
+
+    const boxes = root.querySelectorAll('.video-box');
+
+    boxes.forEach((box) => {
+        const video = box.querySelector('video');
+        const btn = box.querySelector('.play-button');
+        if (!video || !btn) return;
+
+        btn.style.opacity = '1';
+        btn.style.visibility = 'visible';
+        btn.style.pointerEvents = 'auto';
+        btn.style.transition = btn.style.transition || 'opacity 280ms ease';
+
+        function showButton() {
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+            btn.style.visibility = 'visible';
+        }
+
+        function hideButton() {
+            btn.style.opacity = '0';
+            btn.style.pointerEvents = 'none';
+            btn.style.visibility = 'visible';
+        }
+
+        async function playVideo() {
+            try {
+                if (video.ended) {
+                    video.currentTime = 0;
+                }
+                await video.play();
+                hideButton();
+            } catch (e) {
+                showButton();
+            }
+        }
+
+        function pauseVideo() {
+            video.pause();
+            showButton();
+        }
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            if (!video.paused && !video.ended) return;
+
+            playVideo();
+        });
+
+        video.addEventListener('click', () => {
+            if (!video.paused && !video.ended) {
+                pauseVideo();
+            }
+        });
+
+        video.addEventListener('ended', () => {
+            video.pause();
+            showButton();
+        });
+
+        video.addEventListener('play', hideButton);
+        video.addEventListener('pause', () => {
+            if (!video.ended) showButton();
+        });
+
+        showButton();
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const root = document.querySelector('main.content-exoai-learning');
+    if (!root) return;
+
+    const selectBoxes = root.querySelectorAll('.parameter-section-wrap .select-box');
+
+    const closeAll = () => {
+        root.querySelectorAll('.ui-select.is-open').forEach((ui) => {
+            ui.classList.remove('is-open');
+            const list = ui.querySelector('.ui-select-list');
+            if (list) list.hidden = true;
+        });
+    };
+
+    document.addEventListener('mousedown', (e) => {
+        if (!root.contains(e.target)) return;
+        if (e.target.closest('.ui-select')) return;
+        closeAll();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAll();
+    });
+
+    const syncSelectedText = () => {
+        const apiSelect = root.querySelector('#apiOption');
+        const cargoSelect = root.querySelector('#cargoOption');
+        const lipidSelect = root.querySelector('#lipidOption');
+        const targetSelect = root.querySelector('#targetOrganOption');
+
+        const apiText = root.querySelector('#apiOptionText');
+        const cargoText = root.querySelector('#cargoOptionText');
+        const lipidText = root.querySelector('#lipidText');
+        const targetText = root.querySelector('#targetOrganText');
+
+        const apiInput = root.querySelector('#apiDirecInput');
+
+        if (apiSelect && apiText) {
+            const apiOpt = apiSelect.options[apiSelect.selectedIndex];
+            if (apiSelect.value === 'direcInput' && apiInput) {
+                const v = String(apiInput.value || '').trim();
+                apiText.textContent = v || 'Direct Input';
+            } else {
+                apiText.textContent = apiOpt ? apiOpt.textContent : '-';
+            }
+        }
+
+        if (cargoSelect && cargoText) {
+            const opt = cargoSelect.options[cargoSelect.selectedIndex];
+            cargoText.textContent = (opt && opt.value) ? opt.textContent : '-';
+        }
+
+        if (lipidSelect && lipidText) {
+            const opt = lipidSelect.options[lipidSelect.selectedIndex];
+            lipidText.textContent = (opt && opt.value) ? opt.textContent : '-';
+        }
+
+        if (targetSelect && targetText) {
+            const opt = targetSelect.options[targetSelect.selectedIndex];
+            targetText.textContent = (opt && opt.value) ? opt.textContent : '-';
+        }
+    };
+
+    const initOne = (box) => {
+        const select = box.querySelector('select');
+        const ui = box.querySelector('.ui-select');
+        if (!select || !ui) return;
+
+        const btn = ui.querySelector('.ui-select-button');
+        const list = ui.querySelector('.ui-select-list');
+        if (!btn || !list) return;
+
+        select.classList.add('active');
+
+        const renderBtn = () => {
+            const opt = select.options[select.selectedIndex];
+            const isPlaceholder = !opt || opt.value === '';
+
+            btn.textContent = opt ? opt.textContent : '';
+            btn.classList.toggle('is-placeholder', isPlaceholder);
+        };
+
+        const renderList = () => {
+            list.innerHTML = '';
+
+            Array.from(select.options).forEach((opt) => {
+                if (opt.value === '') return;
+
+                const item = document.createElement('button');
+                item.type = 'button';
+                item.className = 'ui-select-item';
+                item.textContent = opt.textContent;
+
+                if (opt.value === select.value) item.classList.add('is-active');
+
+                item.addEventListener('click', () => {
+                    if (select.disabled) return;
+
+                    select.value = opt.value;
+                    select.dispatchEvent(new Event('change', { bubbles: true }));
+
+                    renderBtn();
+                    renderList();
+
+                    ui.classList.remove('is-open');
+                    list.hidden = true;
+                });
+
+                list.appendChild(item);
+            });
+        };
+
+        const syncDisabled = () => {
+            const disabled = !!select.disabled;
+            ui.classList.toggle('is-disabled', disabled);
+            btn.disabled = disabled;
+
+            if (disabled) {
+                ui.classList.remove('is-open');
+                list.hidden = true;
+            }
+        };
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (select.disabled) return;
+
+            const willOpen = !ui.classList.contains('is-open');
+            closeAll();
+
+            if (willOpen) {
+                ui.classList.add('is-open');
+                list.hidden = false;
+                renderList();
+            } else {
+                ui.classList.remove('is-open');
+                list.hidden = true;
+            }
+        });
+
+        select.addEventListener('change', () => {
+            renderBtn();
+            renderList();
+            syncDisabled();
+            syncSelectedText();
+
+            if (select.id === 'apiOption') {
+                const input = root.querySelector('#apiDirecInput');
+                if (input) {
+                    input.classList.toggle('active', select.value === 'direcInput');
+                    if (select.value !== 'direcInput') input.value = '';
+                }
+            }
+        });
+
+        const mo = new MutationObserver(() => {
+            renderBtn();
+            renderList();
+            syncDisabled();
+        });
+
+        mo.observe(select, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['disabled']
+        });
+
+        if (select.id === 'apiOption') {
+            const input = root.querySelector('#apiDirecInput');
+            if (input) {
+                input.addEventListener('input', () => {
+                    syncSelectedText();
+                });
+            }
+        }
+
+        ui.classList.remove('is-open');
+        list.hidden = true;
+
+        renderBtn();
+        renderList();
+        syncDisabled();
+    };
+
+    selectBoxes.forEach((box) => initOne(box));
+
+    syncSelectedText();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const root = document.querySelector('main.content-exoai-learning');
+    if (!root) return;
+
+    root.addEventListener('click', (e) => {
+        const runBtn = e.target.closest('.run-button');
+        if (!runBtn) return;
+
+        const buttonBox = runBtn.closest('.button-box');
+        const sectionWrap = runBtn.closest('.p`arameter-section-wrap');
+
+        if (!buttonBox || !sectionWrap) return;
+
+        buttonBox.classList.add('active');
+
+        clearTimeout(buttonBox._activeTimer);
+        clearTimeout(sectionWrap._activeTimer);
+
+        const DELAY = 1000;
+
+        buttonBox._activeTimer = setTimeout(() => {
+            buttonBox.classList.remove('active');
+        }, DELAY);
+
+        sectionWrap._activeTimer = setTimeout(() => {
+            sectionWrap.classList.add('active');
+        }, DELAY);
+    });
+});

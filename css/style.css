@@ -11,6 +11,14 @@ html, body {
     font-family: "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
+button {
+    font-family: "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+[hidden] {
+    display: none !important;
+}
+
 .main-page {
     background: #000;
 }
@@ -100,17 +108,27 @@ html, body {
 .content-index .video-wrap.is-bg-fixed {
     background: none;
 }
-.content-index .video-wrap::before {
-    content: "";
+.content-index .video-wrap .video-box {
     position: fixed;
     inset: 0;
-    background: url(../images/img_main_banner.png) center top / 100% 100dvh no-repeat;
     opacity: 1;
     visibility: hidden;
     pointer-events: none;
     z-index: 0;
 }
-.content-index .video-wrap.is-bg-fixed::before {
+.content-index .video-wrap .video-box:before {
+    position: fixed;
+    width: 100%;
+    height: 100dvh;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+    content: "";
+}
+.content-index .video-wrap .video-box video {
+    width: 100%;
+    height: 100dvh;
+    object-fit: cover;
+}
+.content-index .video-wrap.is-bg-fixed .video-box {
     visibility: visible;
 }
 .content-index .video-wrap:after {
@@ -362,10 +380,12 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
 }
 .content-index .card-wrap .card-container .card-list .card-item .card-button .image {
     display: flex;
-    width: 100%;
+    width: 480px;
+    height: 300px;
 }
 .content-index .card-wrap .card-container .card-list .card-item .card-button .image img {
     width: 100%;
+    height: 100%;
 }
 .content-index .card-wrap .card-container .card-list .card-item .card-button .image-active {
     display: flex;
@@ -424,7 +444,7 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     transition: .3s;
 }
 .content-index .card-wrap .card-container .accordion-wrap.active {
-    max-height: 1000px;
+    max-height: 10000px;
     margin: 60px 0 0;
     padding: 80px 0 90px;
     opacity: 1;
@@ -462,16 +482,16 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 40px 0;
+    padding: 40px 30px;
 }
 .content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-text-box {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 .content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-text-box .icon {
     display: flex;
-    width: 50px;
+    flex: 0 0 50px;
     height: 50px;
 }
 .content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-text-box .icon img {
@@ -482,7 +502,8 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     font-weight: bold;
     color: #000;
     letter-spacing: -0.03em;
-    line-height: 30px;
+    line-height: 36px;
+    text-align: left;
 }
 .content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-button .button-icon {
     display: flex;
@@ -501,11 +522,13 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     width: 100%;
 }
 .content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-box {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     overflow: hidden;
     width: 100%;
     max-height: 0;
     padding: 0;
-    border-top: 1px solid #B1B1B1;
     background: #FBFBFB;
     font-size: 24px;
     line-height: 1.2;
@@ -513,13 +536,27 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     transition: .3s;
 }
 .content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-box.active {
-    max-height: 800px;
+    max-height: 10000px;
     padding: 40px 0;
     opacity: 1;
 }
 .content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-box .box-text {
     display: flex;
     padding: 0 50px;
+    line-height: 29px;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-box .image {
+    display: flex;
+    padding: 0 50px;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-box .image img {
+    width: 100%;
+}
+.content-index .card-wrap .card-container .accordion-wrap .accordion-list .accordion-item .accordion-box .link {
+    display: flex;
+    padding: 0 50px;
+    font-size: 24px;
+    color: #4B4B4B;
 }
 .content-index .tab-wrap {
     display: flex;
@@ -739,12 +776,19 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
 }
 .content-manual .manual-wrap .manual-container .image-wrap {
     display: flex;
+    justify-content: space-between;
     gap: 20px;
 }
 .content-manual .manual-wrap .manual-container .image-wrap .image-box {
     overflow: hidden;
     width: 100%;
     border-radius: 20px;
+}
+.content-manual .manual-wrap .manual-container .image-wrap .image-box.first {
+    width: 729px;
+}
+.content-manual .manual-wrap .manual-container .image-wrap .image-box.second {
+    width: 532px;
 }
 .content-manual .manual-wrap .manual-container .image-wrap .image-box img {
     width: 100%;
@@ -1124,19 +1168,75 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     line-height: 30px;
 }
 .content-exoai-learning .workflow-wrap .workflow-box {
-    overflow: hidden;
-    width: 100%;
-    padding: 56px;
-    border-radius: 20px;
-    background: #FFF;
+    display: flex;
 }
 .content-exoai-learning .workflow-wrap .workflow-box img {
     width: 100%;
 }
+.content-exoai-learning .video-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    width: 1520px;
+    margin: 110px auto 0;
+    padding: 80px 100px;
+    border-radius: 20px;
+    background: linear-gradient(116.2deg, rgba(105, 170, 255, 0.24) 19.94%, rgba(71, 71, 71, 0.4) 106.73%);
+}
+.content-exoai-learning .video-wrap .wrap-title {
+    display: flex;
+}
+.content-exoai-learning .video-wrap .wrap-title .title {
+    font-size: 50px;
+    font-weight: bold;
+    color: #FFF;
+    letter-spacing: -0.03em;
+    line-height: 30px;
+}
+.content-exoai-learning .video-wrap .video-box {
+    position: relative;
+}
+.content-exoai-learning .video-wrap .video-box video {
+    width: 100%;
+    cursor: pointer;
+}
+.content-exoai-learning .video-wrap .video-box .play-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #00000080;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: opacity 280ms ease;
+}
+.content-exoai-learning .video-wrap .video-box.is-playing .play-button {
+    opacity: 0;
+    pointer-events: none;
+}
+.content-exoai-learning .video-wrap .video-box.is-playing:hover .play-button {
+    opacity: 1;
+}
+@media (hover: none) {
+    .content-exoai-learning .video-wrap .video-box.is-playing:hover .play-button {
+        opacity: 0;
+    }
+}
+.content-exoai-learning .video-wrap .video-box .play-button img {
+    position: relative;
+    left: 4px;
+    height: 30px;
+}
 .content-exoai-learning .parameter-section-wrap {
     display: flex;
     flex-wrap: wrap;
-    row-gap: 40px;
+    row-gap: 50px;
     column-gap: 30px;
     width: 1520px;
     margin: 50px auto 0;
@@ -1144,40 +1244,59 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     border-radius: 20px;
     background: linear-gradient(125.33deg, rgba(105, 170, 255, 0.24) 21.74%, rgba(71, 71, 71, 0.4) 96.33%);
 }
+.content-exoai-learning .parameter-section-wrap .parameter-exoai-wrap {
+    display: flex;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-exoai-wrap img {
+    width: 100%;
+}
 .content-exoai-learning .parameter-section-wrap .parameter-section-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    padding: 50px 120px;
+    width: 740px;
+    height: fit-content;
+    padding: 50px 70px;
     border-radius: 10px;
     background: #FFF;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .title-box {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 10px;
+    width: 100%;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .title-box .box-title {
     font-size: 35px;
     font-weight: bold;
-    color: #000;
+    color: #1C3A6C;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .title-box .box-text {
     font-size: 20px;
-    color: #717171;
+    color: #89909D;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap {
     display: flex;
+    flex-direction: column;
     gap: 30px;
+    width: 100%;
     margin: 40px 0 0;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     position: relative;
 }
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .select-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3671D4;
+}
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box select {
-    width: 340px;
+    width: 100%;
     height: 60px;
     padding: 18px 20px;
     border: 1px solid #3671D4;
@@ -1186,30 +1305,107 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     font-family: "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: 20px;
     font-weight: bold;
-    color: #000;
+    color: #1C3A6C;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box select.active {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box select:disabled {
     border: 1px solid #CBCBCB;
     background: url(../images/ico_select_disable.png) right 20px center / 17px 12px no-repeat;
     color: #ACACAC;
 }
-.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .select-title {
-    position: absolute;
-    top: -8px;
-    left: 14px;
-    padding: 0 0 0 10px;
-    background: #FFF;
-    font-size: 16px;
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .ui-select {
+    position: relative;
+    width: 100%;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .ui-select .ui-select-button {
+    width: 100%;
+    height: 60px;
+    padding: 18px 52px 18px 20px;
+    border: 1px solid #3671D4;
+    border-radius: 5px;
+    background: url(../images/ico_select.png) right 20px center / 17px 12px no-repeat #fff;
+    font-family: "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 20px;
     font-weight: bold;
-    color: #3671D4;
+    color: #1C3A6C;
+    text-align: left;
+    cursor: pointer;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .ui-select .ui-select-button.is-placeholder {
+    color: #ACACAC;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .ui-select.is-disabled .ui-select-button {
+    border: 1px solid #CBCBCB;
+    background: url(../images/ico_select_disable.png) right 20px center / 17px 12px no-repeat #fff;
+    color: #ACACAC;
+    cursor: not-allowed;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .ui-select.is-open .ui-select-button {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .ui-select .ui-select-list {
+    overflow: auto;
+    position: absolute;
+    top: calc(100% - 1px);
+    right: 0;
+    left: 0;
+    z-index: 30;
+    max-height: 240px;
+    border: 1px solid #3671D4;
+    border-top: 0;
+    border-radius: 0 0 5px 5px;
+    background: #fff;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .ui-select-item {
+    width: 100%;
+    padding: 14px 20px;
+    border: 0;
+    background: transparent;
+    font-family: "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #1C3A6C;
+    text-align: left;
+    cursor: pointer;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .ui-select-item:hover,
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box .ui-select-item.is-active {
+    background: #F3F7FF;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box input {
+    display: none;
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    border: 2px solid #4988F2;
+    border-radius: 5px;
+    font-family: "Pretendard", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1C3A6C;
+    line-height: 60px;
+    outline: none;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box input::placeholder {
+    color: #ACACAC;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .select-wrap .select-box input.active {
+    display: block;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 1080px;
-    margin: 30px 0 0;
-    padding: 30px 60px 35px;
+    width: 100%;
+    margin: 40px 0 0;
+    padding: 30px 40px;
     border-radius: 10px;
     background: #F3F7FF;
 }
@@ -1221,7 +1417,7 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .text-container .box-title {
     font-size: 24px;
     font-weight: bold;
-    color: #09111F;
+    color: #1C3A6C;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .text-container .text-box {
     display: flex;
@@ -1233,52 +1429,78 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     padding: 0 0 0 22px;
     background: url(../images/ico_asterisk.png) left center / 10px no-repeat;
     font-size: 20px;
+    font-weight: 500;
+    color: #333F53;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .text-container .text-box .box-text strong {
     font-size: 20px;
     font-weight: bold;
-    color: #09111F;
+    color: #333F53;
 }
-.content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .button-box {
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 10px;
+    width: 100%;
+    margin: 40px 0 0;
 }
-.content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .button-box button {
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box button {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
-    width: 335px;
+    width: 100%;
     height: 60px;
     border-radius: 5px;
 }
-.content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .button-box button .button-text {
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box button .button-text {
     font-size: 20px;
     font-weight: bold;
     color: #FFF;
 }
-.content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .button-box button.run-button {
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box button.run-button {
     background: #112D5C;
 }
-.content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .button-box button.run-button .button-icon {
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box.active button.run-button {
+    display: none;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box button.run-button .button-icon {
     display: flex;
     width: 14px;
     height: 14px;
 }
-.content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .button-box button.run-button .button-icon img {
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box button.run-button .button-icon img {
     width: 100%;
 }
-.content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .button-box button.download-button {
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box button.loading-button {
+    display: none;
+    background: #C5C5C5;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box.active button.loading-button {
+    display: flex;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box button.loading-button .button-icon {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    animation: spin 0.9s linear infinite;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box button.loading-button .button-icon img {
+    width: 100%;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box button.download-button {
     background: #3671D4;
 }
-.content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .button-box button.download-button .button-icon {
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box.active button.download-button {
+    background: #C5C5C5;
+}
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box button.download-button .button-icon {
     display: flex;
     width: 13px;
     height: 13px;
 }
-.content-exoai-learning .parameter-section-wrap .parameter-section-container .selected-parameters-wrap .button-box button.download-button .button-icon img {
+.content-exoai-learning .parameter-section-wrap .parameter-section-container .button-box button.download-button .button-icon img {
     width: 100%;
 }
 .content-exoai-learning .parameter-section-wrap .parameter-section-container .container-text {
@@ -1290,71 +1512,105 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
 .content-exoai-learning .parameter-section-wrap .critical-wrap {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    height: 379px;
-    border-radius: 10px;
-    background: #FFF;
-}
-.content-exoai-learning .parameter-section-wrap .critical-wrap.first {
-    width: 442px;
-    padding: 40px 58px;
-}
-.content-exoai-learning .parameter-section-wrap .critical-wrap.second {
-    width: 409px;
-    padding: 40px 42px 0;
-}
-.content-exoai-learning .parameter-section-wrap .critical-wrap.third {
-    width: 409px;
-    padding: 40px 36px 0;
-}
-.content-exoai-learning .parameter-section-wrap .critical-wrap .wrap-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #000;
-    text-align: center;
+    gap: 30px;
+    width: 550px;
 }
 .content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container {
     display: flex;
     flex-direction: column;
+    gap: 14px;
+    position: relative;
+    width: 100%;
+    padding: 40px 72px;
+    border-radius: 10px;
+    background: #FFF;
+}
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .container-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1C3A6C;
+    text-align: center;
+}
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .critical-box {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
+    width: 100%;
     padding: 20px 0 0;
     border-top: 1px solid #F5F5F5;
 }
-.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .critical-list {
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .critical-box .critical-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
     width: 100%;
 }
-.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .critical-list .critical-item {
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .critical-box .critical-list .critical-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .critical-list .critical-item .item-title {
-    font-size: 16px;
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .critical-box .critical-list .critical-item .item-title {
+    font-size: 20px;
     font-weight: bold;
-    color: #000;
+    color: #1C3A6C;
 }
-.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .critical-list .critical-item .item-text {
-    font-size: 14px;
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .critical-box .critical-list .critical-item .item-text {
+    font-size: 20px;
     font-weight: bold;
     color: #1284D5;
 }
-.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .total {
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .critical-box .total {
     display: flex;
     justify-content: flex-end;
     border-top: 1px solid #B1B1B1;
-    padding: 10px 6px 0 0;
+    padding: 20px 20px 0;
     font-size: 18px;
     font-weight: bold;
     color: #2157B3;
+}
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .no-results-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: #FFFFFFE6;
+}
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .no-results-box .image {
+    display: flex;
+    width: 131px;
+    height: 95px;
+}
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .no-results-box .image img {
+    width: 100%;
+    height: 100%;
+}
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .no-results-box .box-title {
+    margin: 20px 0 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333F53;
+    line-height: 24px;
+}
+.content-exoai-learning .parameter-section-wrap .critical-wrap .critical-container .no-results-box .box-text {
+    margin: 12px 0 0;
+    font-size: 16px;
+    color: #858D9A;
+    text-align: center;
+    line-height: 19px;
 }
 .content-exoai-learning .parameter-section-wrap .exosome-image-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    position: relative;
     width: 100%;
     padding: 50px 0 60px;
     border-radius: 10px;
@@ -1372,9 +1628,50 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
 .content-exoai-learning .parameter-section-wrap .exosome-image-wrap .image-box img {
     width: 100%;
 }
+.content-exoai-learning .parameter-section-wrap .exosome-image-wrap .no-results-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: #FFFFFFE6;
+}
+.content-exoai-learning .parameter-section-wrap .exosome-image-wrap .no-results-box .image {
+    display: flex;
+    width: 131px;
+    height: 95px;
+}
+.content-exoai-learning .parameter-section-wrap .exosome-image-wrap .no-results-box .image img {
+    width: 100%;
+    height: 100%;
+}
+.content-exoai-learning .parameter-section-wrap .exosome-image-wrap .no-results-box .box-title {
+    margin: 20px 0 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333F53;
+    line-height: 24px;
+}
+.content-exoai-learning .parameter-section-wrap .exosome-image-wrap .no-results-box .box-text {
+    margin: 12px 0 0;
+    font-size: 16px;
+    color: #858D9A;
+    text-align: center;
+    line-height: 19px;
+}
+.content-exoai-learning .parameter-section-wrap.active .no-results-box {
+    display: none !important;
+}
 .content-exoai-learning .exoai-wrap,
 .content-exoai-learning .workflow-wrap,
+.content-exoai-learning .video-wrap,
 .content-exoai-learning .parameter-section-wrap,
+.content-exoai-learning .parameter-section-wrap .parameter-exoai-wrap,
 .content-exoai-learning .parameter-section-wrap .parameter-section-container,
 .content-exoai-learning .parameter-section-wrap .critical-wrap,
 .content-exoai-learning .parameter-section-wrap .exosome-image-wrap {
@@ -1386,7 +1683,9 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
 
 .content-exoai-learning .exoai-wrap.is-show,
 .content-exoai-learning .workflow-wrap.is-show,
+.content-exoai-learning .video-wrap.is-show,
 .content-exoai-learning .parameter-section-wrap.is-show,
+.content-exoai-learning .parameter-section-wrap .parameter-exoai-wrap.is-show,
 .content-exoai-learning .parameter-section-wrap .parameter-section-container.is-show,
 .content-exoai-learning .parameter-section-wrap .critical-wrap.is-show,
 .content-exoai-learning .parameter-section-wrap .exosome-image-wrap.is-show {
@@ -1434,4 +1733,13 @@ body.is-pin .content-index .video-wrap .text-wrap .text-container {
     font-size: 15px;
     color: #717171;
     line-height: 35px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
