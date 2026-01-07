@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header-wrap');
-    const videoWrap = document.querySelector('.video-wrap');
-    const scrollBox = document.querySelector('.video-wrap .scroll-box');
+    const videoWrap = document.querySelector('.content-index .video-wrap');
+    const scrollBox = document.querySelector('.content-index .video-wrap .scroll-box');
 
     const textWrap = document.querySelector('.content-index .video-wrap .text-wrap');
     const textContainer = textWrap ? textWrap.querySelector('.text-container') : null;
@@ -206,12 +206,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (videoWrap) {
-            const wrapTop = videoWrap.offsetTop;
-            const wrapBottom = wrapTop + videoWrap.offsetHeight;
-            const inWrap = y >= wrapTop && y < wrapBottom;
+            const bannerWrap = document.querySelector('.content-index .banner-wrap');
 
-            videoWrap.classList.toggle('is-bg-fixed', inWrap || pin.active);
+            if (bannerWrap) {
+                const triggerY = bannerWrap.offsetTop - window.innerHeight;
+
+                const keepVideo = (y < triggerY) || pin.active;
+
+                videoWrap.classList.toggle('is-bg-fixed', keepVideo);
+            } else {
+                videoWrap.classList.toggle('is-bg-fixed', true);
+            }
         }
+
 
         if (!pin.active && textWrap && performance.now() > ignoreCrossUntil) {
             const start = textWrap.offsetTop;
@@ -263,8 +270,10 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) return;
 
-                const buffer = 20;
-                if (entry.boundingClientRect.top >= window.innerHeight + buffer) {
+                const top = entry.boundingClientRect.top;
+                const bottom = entry.boundingClientRect.bottom;
+
+                if (top >= window.innerHeight || bottom <= 0) {
                     el.classList.remove('is-show');
                 }
             });
@@ -278,6 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
         resetIo.observe(el);
     };
 
+    const heroTextBox = document.querySelector('.content-index .video-wrap .video-container .text-box');
+    observeShowReplay(heroTextBox);
+
     const bannerWrap = document.querySelector('.content-index .banner-wrap');
     const cardWrap = document.querySelector('.content-index .card-wrap');
     const tabWrap = document.querySelector('.content-index .tab-wrap');
@@ -285,9 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
     observeShowReplay(bannerWrap);
     observeShowReplay(cardWrap);
     observeShowReplay(tabWrap);
-
-    const visualWrap = document.querySelector('.content-manual .visual-wrap');
-    observeShowReplay(visualWrap);
 
     document.querySelectorAll('.content-manual .manual-wrap .manual-container').forEach((el) => observeShowReplay(el));
 
@@ -806,3 +815,76 @@ document.addEventListener('DOMContentLoaded', () => {
         }, DELAY);
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const titles = document.querySelectorAll('.visual-wrap .box-title');
+
+    titles.forEach((titleEl) => {
+        revealTitleByChar(titleEl, {
+            stepMs: 40,
+        });
+    });
+});
+
+function revealTitleByChar(titleEl, opts) {
+    if (!titleEl) return;
+    if (titleEl.dataset.charRevealDone === '1') return;
+
+    const stepMs = Number(opts?.stepMs ?? 35);
+
+    let idx = 0;
+
+    const makeCharSpan = (ch) => {
+        const span = document.createElement('span');
+        span.className = 'char';
+
+        span.textContent = (ch === ' ') ? '\u00A0' : ch;
+
+        span.style.setProperty('--d', `${(idx * stepMs) / 1000}s`);
+        idx += 1;
+
+        return span;
+    };
+
+    const build = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            const frag = document.createDocumentFragment();
+            const text = node.textContent ?? '';
+
+            for (const ch of text) {
+                frag.appendChild(makeCharSpan(ch));
+            }
+            return frag;
+        }
+
+        if (node.nodeType === Node.ELEMENT_NODE) {
+            const tag = node.tagName.toLowerCase();
+
+            if (tag === 'br') {
+                return document.createElement('br');
+            }
+
+            const clone = node.cloneNode(false);
+            node.childNodes.forEach((child) => {
+                clone.appendChild(build(child));
+            });
+            return clone;
+        }
+
+        return document.createDocumentFragment();
+    };
+
+    const frag = document.createDocumentFragment();
+    titleEl.childNodes.forEach((child) => {
+        frag.appendChild(build(child));
+    });
+
+    const originalText = titleEl.textContent || '';
+    titleEl.setAttribute('aria-label', originalText.trim());
+
+    titleEl.innerHTML = '';
+    titleEl.appendChild(frag);
+
+    titleEl.classList.add('is-reveal');
+    titleEl.dataset.charRevealDone = '1';
+}
