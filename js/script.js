@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (scrollBox) {
             const fadeRange = 260;
             const t = Math.min(y, fadeRange);
-            const opacity = 1 - (t / fadeRange);
+            const opacity = 0.7 - (t / fadeRange);
 
             scrollBox.style.opacity = String(opacity);
             scrollBox.style.transform = `translateY(${(1 - opacity) * 12}px)`;
@@ -244,40 +244,55 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', update);
 
-    const observeShowOnce = (el) => {
+    const observeShowReplay = (el) => {
         if (!el) return;
 
-        const io = new IntersectionObserver((entries) => {
+        const showIo = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
+                if (entry.isIntersecting) {
+                    el.classList.add('is-show');
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.15,
+            rootMargin: '0px 0px -10% 0px'
+        });
 
-                el.classList.add('is-show');
-                io.disconnect();
+        const resetIo = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) return;
+
+                const buffer = 20;
+                if (entry.boundingClientRect.top >= window.innerHeight + buffer) {
+                    el.classList.remove('is-show');
+                }
             });
         }, {
             root: null,
             threshold: 0,
-            rootMargin: '0px 0px -10% 0px'
+            rootMargin: '0px'
         });
 
-        io.observe(el);
+        showIo.observe(el);
+        resetIo.observe(el);
     };
 
     const bannerWrap = document.querySelector('.content-index .banner-wrap');
     const cardWrap = document.querySelector('.content-index .card-wrap');
     const tabWrap = document.querySelector('.content-index .tab-wrap');
 
-    observeShowOnce(bannerWrap);
-    observeShowOnce(cardWrap);
-    observeShowOnce(tabWrap);
+    observeShowReplay(bannerWrap);
+    observeShowReplay(cardWrap);
+    observeShowReplay(tabWrap);
 
     const visualWrap = document.querySelector('.content-manual .visual-wrap');
-    observeShowOnce(visualWrap);
+    observeShowReplay(visualWrap);
 
-    document.querySelectorAll('.content-manual .manual-wrap .manual-container').forEach((el) => observeShowOnce(el));
+    document.querySelectorAll('.content-manual .manual-wrap .manual-container').forEach((el) => observeShowReplay(el));
 
     const downloadBox = document.querySelector('.content-manual .download-box');
-    observeShowOnce(downloadBox);
+    observeShowReplay(downloadBox);
 
     const exoaiWrap = document.querySelector('.content-exoai-learning .exoai-wrap');
     const workflowWrap = document.querySelector('.content-exoai-learning .workflow-wrap');
@@ -288,14 +303,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const exosomeImageWrap = document.querySelector('.content-exoai-learning .parameter-section-wrap .exosome-image-wrap');
     const criticalWrap = document.querySelector('.content-exoai-learning .parameter-section-wrap .critical-wrap');
 
-    observeShowOnce(exoaiWrap);
-    observeShowOnce(workflowWrap);
-    observeShowOnce(guideVideoWrap);
-    observeShowOnce(parameterSectionWrap);
-    observeShowOnce(parameterExoaiWrap);
-    observeShowOnce(parameterSectionContainer);
-    observeShowOnce(exosomeImageWrap);
-    observeShowOnce(criticalWrap);
+    observeShowReplay(exoaiWrap);
+    observeShowReplay(workflowWrap);
+    observeShowReplay(guideVideoWrap);
+    observeShowReplay(parameterSectionWrap);
+    observeShowReplay(parameterExoaiWrap);
+    observeShowReplay(parameterSectionContainer);
+    observeShowReplay(exosomeImageWrap);
+    observeShowReplay(criticalWrap);
 
     const bannerList = document.querySelector('.banner-container .banner-list');
     if (!bannerList) return;
@@ -771,7 +786,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!runBtn) return;
 
         const buttonBox = runBtn.closest('.button-box');
-        const sectionWrap = runBtn.closest('.p`arameter-section-wrap');
+        const sectionWrap = runBtn.closest('.parameter-section-wrap');
 
         if (!buttonBox || !sectionWrap) return;
 
