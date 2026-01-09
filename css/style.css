@@ -328,8 +328,8 @@ body.is-pin .content-index .banner-wrap .text-wrap .text-container {
     flex-direction: column;
     gap: 20px;
     position: absolute;
-    top: 60px;
-    left: 75px;
+    top: 40px;
+    left: 50px;
 }
 .content-index .banner-wrap .banner-container .banner-list .banner-item .text-box .box-title {
     font-size: 30px;
