@@ -298,6 +298,9 @@ document.addEventListener('DOMContentLoaded', () => {
     observeShowReplay(cardWrap);
     observeShowReplay(tabWrap);
 
+    const manualExoaiWrap = document.querySelector('.content-manual .exoai-wrap');
+    observeShowReplay(manualExoaiWrap);
+
     document.querySelectorAll('.content-manual .manual-wrap .manual-container').forEach((el) => observeShowReplay(el));
 
     const downloadBox = document.querySelector('.content-manual .download-box');
@@ -357,7 +360,6 @@ function cardButton(e) {
 
     const resetInner = () => {
         cardWrap.querySelectorAll('.accordion-button.active').forEach((x) => x.classList.remove('active'));
-        cardWrap.querySelectorAll('.accordion-box.active').forEach((x) => x.classList.remove('active'));
     };
 
     const current = cardWrap.querySelector('.accordion-wrap.active');
@@ -381,17 +383,6 @@ function cardButton(e) {
         resetInner();
         target.classList.add('active');
     }
-}
-
-function accordionButton(e) {
-    const accordionItem = e.closest('.accordion-item');
-    if (!accordionItem) return;
-
-    const accordionBox = accordionItem.querySelector('.accordion-box');
-    if (!accordionBox) return;
-
-    e.classList.toggle('active');
-    accordionBox.classList.toggle('active');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
