@@ -1523,6 +1523,19 @@ body.is-pin .content-index .banner-wrap .text-wrap .text-container {
     border-radius: 20px;
     background: linear-gradient(116.2deg, rgba(105, 170, 255, 0.24) 19.94%, rgba(71, 71, 71, 0.4) 106.73%);
 }
+.content-exoai-learning .video-wrap:before {
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(140, 170, 255, 1), rgba(90, 140, 255, 0.9));
+    content: "";
+    filter: drop-shadow(0 0 10px rgba(120, 160, 255, 0.45));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
 .content-exoai-learning .video-wrap .wrap-title {
     display: flex;
 }
