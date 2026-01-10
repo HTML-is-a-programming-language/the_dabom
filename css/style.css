@@ -891,7 +891,7 @@ body.is-pin .content-index .banner-wrap .text-wrap .text-container {
     background: #76C6FF;
 }
 .content-manual .manual-wrap .exoai-wrap .exoai-container .exoai-box.first {
-    top: 132px;
+    top: 18px;
     left: 0;
     width: 394px;
     height: 207px;
@@ -944,7 +944,7 @@ body.is-pin .content-index .banner-wrap .text-wrap .text-container {
     background: #366FFF;
 }
 .content-manual .manual-wrap .exoai-wrap .exoai-container .exoai-box.second {
-    top: 410px;
+    top: 296px;
     left: 0;
     width: 394px;
     height: 230px;
@@ -997,7 +997,7 @@ body.is-pin .content-index .banner-wrap .text-wrap .text-container {
     background: #366FFF;
 }
 .content-manual .manual-wrap .exoai-wrap .exoai-container .exoai-box.third {
-    top: 281px;
+    top: 167px;
     right: 0;
     width: 394px;
     height: 238px;
